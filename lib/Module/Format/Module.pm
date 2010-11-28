@@ -3,19 +3,17 @@ package Module::Format::Module;
 use warnings;
 use strict;
 
-use List::MoreUtils qw(all);
-
 =head1 NAME
 
 Module::Format::Module - encapsulates a single Perl module.
 
 =head1 VERSION
 
-Version 0.0.1
+Version 0.0.2
 
 =cut
 
-our $VERSION = '0.0.1';
+our $VERSION = '0.0.2';
 
 =head1 SYNOPSIS
 
@@ -370,11 +368,26 @@ any funny character (only alphanumeric characters and underscore.).
 
 =cut
 
+sub _all
+{
+    my ($cb, $l) = @_;
+
+    foreach (@$l)
+    {
+        if (not $cb->($_))
+        {
+            return;
+        }
+    }
+
+    return 1;
+}
+
 sub is_sane
 {
     my $self = shift;
 
-    return all { m{\A\w+\z} } @{$self->_components()};
+    return _all( sub { m{\A\w+\z}; }, $self->_components());
 }
 
 =head2 my $module = Module::Format::Module->from_guess({ value => $string});

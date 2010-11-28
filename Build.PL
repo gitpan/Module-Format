@@ -13,7 +13,6 @@ my $builder = Test::Run::Builder->new(
     requires =>
     {
         'Getopt::Long' => '2.36',
-        'List::MoreUtils' => 0,
         'Pod::Usage' => 0,
         'strict' => 0,
         'warnings' => 0,
@@ -30,6 +29,33 @@ my $builder = Test::Run::Builder->new(
     add_to_cleanup      => [ 'Module-Format-*' ],
     create_makefile_pl => 'traditional',
     script_files => ["script/perlmf"],
+    meta_merge =>
+    {
+        resources =>
+        {
+            repository => "http://bitbucket.org/shlomif/web-cpan",
+            homepage => "http://www.shlomifish.org/open-source/projects/Module-Format/",
+        },
+        keywords =>
+        [
+            "modules",
+            "formats",
+            "cpan",
+            "installation",
+            "rpm",
+            "debs",
+            "debian",
+            "mandriva",
+            "fedora",
+            "install",
+            "convert",
+            "apt-get",
+            "urpmi",
+            "yum",
+            "conversion",
+            "perl",
+        ],
+    },
 );
 
 $builder->create_build_script();
