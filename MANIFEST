@@ -11,9 +11,14 @@ MANIFEST.SKIP
 META.yml
 README
 t/00-load.t
+t/cpan-changes.t
 t/module-list.t
 t/module.t
 t/perlmf-app.t
 t/pod-coverage.t
 t/pod.t
+t/style-trailing-space.t
+script/bump-version-number.pl
 script/perlmf
+script/tag-release.pl
+META.json
